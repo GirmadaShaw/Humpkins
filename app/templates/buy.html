@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> PagePal - Buy Book </title>
+	<link rel="icon" type="images/x-icon" href="{{  url_for( 'static' , filename='pictures/favicon.ico' ) }}" />
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+
+	<script>
+		function applyAid(){
+			alert("We will see what we can do! You will see the book in 'Your Books' within 2 days if accepted ");
+		}
+	</script>
+
+
+	<style>
+		.message {
+      position : fixed ; 
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 20px;
+    }
+		body {
+			background-image: url('../static/pictures/background-image.avif');
+			background-repeat: space;
+			background-size: 1%;
+		}
+
+		.edit_options {
+			margin: 200px 200px;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div class="message">
+		{% with messages = get_flashed_messages(with_categories=true) %} {% if
+		messages %} {% for cat,msg in messages %}
+		<div class="alert alert-{{ cat }}">
+		  {{msg}}
+		</div>
+		{% endfor %} {% endif %} {% endwith %}
+	  </div>
+
+	<div class="container-fluid">
+
+		<div class="edit_options">
+
+			<form action="{{ url_for( 'buy' , sec_name = sec_name ) }}" method='post'>
+
+				<div class="mb-3">
+
+					<label class="form-label"> <strong style="color: brown;"> Your User ID </strong> </label>
+					<input name="id" class="form-control form-control-lg" type="text">
+				</div>
+
+
+				<div class="mb-3">
+					<label class="form-label"> <strong style="color: brown;"> Choose Book to Buy </strong> </label>
+					<select name="name" class="form-select">
+						<option selected> <em> Available Books </em> </option>
+
+						{% for book in available_books %}
+						<option value="{{book.name}}"> {{ book.name }} </option>
+						{% endfor %}
+					</select>
+				</div>
+
+
+				<div class="mb-3">
+					<label class="form-label"><strong style="color: brown;"> Amount Paid </strong></label>
+					<input type="number" name="price">
+				</div>
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form><br><br>
+
+			<button id="aidApplication" onclick="location.href='/section/{{sec_name}}'; applyAid();" style="color: brown;"> <strong>Apply for Financial Aid</strong> </button>
+
+		</div>
+
+		
+
+
+
+
+
+	</div>
+
+
+</body>
+
+</html>

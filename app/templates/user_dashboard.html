@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>PagePal - User Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <link rel="icon" type="images/x-icon" href="{{ url_for( 'static' ,filename='pictures/favicon.ico' ) }}" />
+
+  <script src="https://kit.fontawesome.com/62854c29f7.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      background-image: url("../static/pictures/background-image.avif");
+      background-repeat: space;
+      background-size: 1%;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 style="font-size: 70px">
+    Hello, <strong style="color: brown">{{ fname }}</strong> !
+  </h1>
+  <h5>
+    Your User ID is :
+    <strong style="font-size: 19px; color: brown">{{ id }}</strong>
+  </h5>
+
+  <div class="container flex">
+    <div class="flex">
+      <a href="{{ url_for( 'user_books' , id = id ) }}" style="font-size: 25px; color: brown">
+        Your Books
+      </a>
+    </div>
+
+    <div class="flex">
+      <form action="{{ url_for('search') }}" method="post">
+        <input style="font-size: 16px; margin-left: 310px" name="q" type="text" placeholder="Search for books ..." />
+        <button type="submit">
+          <strong style="color: brown">Search</strong>
+        </button>
+      </form>
+    </div>
+
+    <div class="flex">
+      <a href="{{ url_for( 'return_book' , id = id ) }}" style="font-size: 25px; margin-left: 350px; color: brown">
+        Return
+      </a>
+    </div>
+  </div>
+
+  <section class="top-categories">
+    <div class="container">
+      <div class="category-heading">
+        <h1 style="color: black; font-size: 80px">All Categories</h1>
+        <p>Click to surf through books in respective sections</p>
+      </div>
+      <hr />
+      <div class="available-categories flex">
+        {%if all_sections|length > 0 %} {% for section in all_sections %}
+        <div class="card flex">
+          <img height="250px" width="250px"
+            src="{{ url_for('static', filename='/pictures/' + section.name + '-image.png') }}"
+            alt="This image is for {{ section.name }}" />
+
+          <h3>
+            <a href="{{ url_for( 'section' , sec_name = section.name ) }}">
+              <strong style="color: brown"> {{ section.name }} </strong>
+            </a>
+          </h3>
+          <p>{{ section.description }}</p>
+        </div>
+        {% endfor %} {% else %}
+        <h3 style="margin-left: 450px; color: brown">
+          No Sections available
+        </h3>
+        {% endif %}
+        <h2></h2>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex">
+    <p style="font-size: 25px; margin-left: 950px">We suggest based on your mood</p>
+    <a href="{{ url_for( 'blob' ) }}" style="font-size: 25px; margin-left: 50px; color: brown">
+      Try it
+    </a>
+  </div>
+
+  <div class="flex">
+    <a style="font-size: 13px; margin-left: 1300px;"> press 'q' to <strong style="color: brown">lock</strong> emotion</a>
+  </div>
+
+  <section class="top-categories">
+    <div class="container">
+      <div class="category-heading">
+        <h1 style="color: black; font-size: 80px">Feedbacks</h1>
+        <p>People's opinion may influence you decision</p>
+      </div>
+      <hr />
+      <div class="available-categories">
+        {% if feedback|length > 0 %} 
+          {% for feed in feedback %}
+            <div style="margin: 20px; padding: 10px">
+              <h3>{{ feed.content }}</h3> - <strong style="color: brown">{{ feedback_given_users[ loop.index0  ].fname }} 
+                {{feedback_given_users[ loop.index0 ].lname }}</strong>
+        </div>
+        {% endfor %} {% else %}
+        <h3 style="margin-left: 450px; color: brown">
+          No Feedbacks available
+        </h3>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

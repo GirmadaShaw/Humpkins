@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PagePal - {{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css' ) }}" />
+
+    <link rel="icon" type="images/x-icon" href="{{  url_for( 'static' , filename='pictures/favicon.ico' ) }}" />
+
+
+    <script src="https://kit.fontawesome.com/62854c29f7.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background-image: url("../static/pictures/background-image.avif");
+            background-repeat: space;
+            background-size: 1%;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <nav>
+        <div class="container main-nav flex">
+
+            <h1>PagePal</h1>
+
+
+            <div class="nav-bar-items">
+                <ul class="flex">
+                    <li><a class="hover-link" href="#">Home</a></li>
+                    <li><a class="hover-link" href="#here">Contact</a></li>
+                    <li><a class="hover-link" href="{{ url_for('register')  }}">Register</a></li>
+                    <li><a class="hover-link" href="{{ url_for('login') }}">Login</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+
+    </nav>
+
+    <header>
+        <div class="container flex header-section">
+            <div class="left-header">
+                <h1>PIRATES OF DREAM</h1>
+            </div>
+
+            <div class="right-header">
+                <img src="{{  url_for( 'static' , filename='pictures/book-image.png' ) }}"
+                    alt="This is the image of a book">
+            </div>
+
+
+        </div>
+    </header>
+
+
+    <section class="top-categories">
+        <div class="container">
+            <div class="category-heading">
+                <h2>Top Categories</h2>
+                <p>Where Books Throw the Best Literary Parties</p>
+            </div><hr>
+
+            <div class="available-categories flex">
+
+                <div class="card flex">
+                    <img class="definite-size" src="{{  url_for('static' , filename='pictures/fiction-image.png' ) }}"
+                        alt="This is an image for fiction card " />
+                    <h3> <a style="color:brown">Fiction</a> </h3>
+                </div>
+
+                <div class="card flex">
+                    <img class="definite-size" src="{{  url_for( 'static' , filename='pictures/non-fiction-image.png' )
+                        }}" alt="This is an image for non-fiction card" />
+                    <h3> <a style="color:brown">Non-Fiction</a> </h3>
+                </div>
+
+                <div class="card flex">
+                    <img class="definite-size" src="{{  url_for( 'static' , filename='pictures/thriller-image.png' )
+                        }}" alt="This is an image for Thriller card" />
+                    <h3> <a style="color:brown">Thriller</a> </h3>
+                </div>
+
+                <div class="card flex">
+                    <img class="definite-size" src="{{  url_for( 'static' , filename='pictures/fantasy-image.png' ) }}"
+                        alt="This is an image for Fantasy card" />
+                    <h3> <a style="color:brown">Fantasy</a> </h3>
+                </div>
+
+                <div class="card flex">
+                    <img class="definite-size" src="{{  url_for( 'static' , filename='pictures/romance-image.png' ) }}"
+                        alt="This is an image for Romance card" />
+                    <h3> <a style="color:brown">Romance</a> </h3>
+                </div>
+
+                <div class="card flex">
+                    <img class="definite-size" src="{{  url_for( 'static' , filename='pictures/horror-image.png' ) }}"
+                        alt="This is an image for Horror card" />
+                    <h3> <a style="color:brown">Horror</a> </h3>
+                </div>
+
+                <div class="card flex">
+                    <img class="definite-size" src="{{  url_for( 'static' , filename='pictures/historical-image.png' )
+                        }}" alt="This is an image for Historical card" />
+                    <h3> <a style="color:brown" >Historical</a> </h3>
+                </div>
+
+                <div class="card flex">
+                    <img class="definite-size" src="{{  url_for( 'static' , filename='pictures/business-image.png' )
+                        }}" alt="This is an image for Business card" />
+                    <h3> <a  style="color:brown" >Business</a> </h3>
+                </div>
+
+                <div class="card flex">
+                    <img class="definite-size" src="{{  url_for( 'static' , filename='pictures/autobiography-image.png'
+                        ) }}" alt="This is an image for Autobiography card" />
+                    <h3> <a style="color:brown" >Autobiography</a> </h3>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <div class="spacer"></div>
+
+    <footer id="here">
+        <footer>
+            <div class="container">
+                <footer>
+                    <div class="contact-info">
+                        <div class="information1">
+                            <h3> Contact Us </h3>
+                            <p> Email: paramveersingh8902@gmail.com</p>
+                        </div>
+                        <div class="information2">
+                            <h3>Connect With Us</h3>
+                            <div class="social-icons">
+                                <a href="https://www.linkedin.com/in/paramveer-singh-690b9a200/"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://www.instagram.com/irkens_295/"><i class="fa-brands fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="color:white ; "> 2024 My Website. All rights reserved.</p>
+                </footer>
+            </div>
+
+        </footer>
+
+
+    </footer>
+
+</body>
+
+</html>

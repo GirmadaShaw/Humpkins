@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PagePal - {{title}} </title>
+     
+    <link rel="icon" type="images/x-icon" href="{{  url_for( "static" , filename='pictures/favicon.ico' )  }}" />
+    
+    <style>
+       body {
+        background-image: url("../static/pictures/background-image.avif");
+        background-repeat: space;
+        background-size: 1%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+        button {
+            margin : 50px ;
+            padding : 20px ;
+
+        }
+        a {
+            text-decoration: none ;
+            color : black ; 
+            font-size: 40px;
+            margin: 90px;
+
+        }
+    </style>
+</head>
+
+<body>
+	    
+        <button> <a style="color:brown" class="archi" href="{{ url_for('archivist_register')  }}"><b>Archivist Registration</b></a></button>
+    	<button> <a style="color:brown" class="user" href="{{ url_for('user_register')  }}"><b>User Registration</b></a></button>
+
+</body>
+
+
+
+
+	
+
+
+
+
+

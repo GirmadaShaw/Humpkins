@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <title>PagePal - Results </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link rel="icon" type="images/x-icon" href="{{ url_for( 'static' , filename='pictures/favicon.ico' ) }}" />
+
+
+    <script src="https://kit.fontawesome.com/62854c29f7.js" crossorigin="anonymous"></script>
+    <style>
+        .message {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+
+            margin-top: 20px;
+
+        }
+
+        body {
+            background-image: url('../static/pictures/background-image.avif');
+            background-repeat: space;
+            background-size: 1%;
+        }
+
+        .Buy {
+            text-align: right;
+        }
+
+        .Buy button {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .Buy button a {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="message">
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for cat,msg in messages %}
+        <div class="alert alert-{{ cat }}">
+            {{msg}}
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
+    </div>
+
+    <section class="top-categories">
+        <div class="container">
+            <div class="category-heading">
+                <h1 style="color: black; font-size: 80px">Your Results</h1>
+                <p>Hope this could help you </p>
+            </div>
+            <hr />
+
+
+
+            <div class="available-categories flex">
+
+                {% for book in results %}
+                <div class="card flex">
+                    <h2>
+                        <a style="color: black;"> {{ book.name }} </a>
+                    </h2>
+                    <p>{{ book.content }}</p>
+
+                    <h4 style="color: brown"> Rated as {{ book.rating }} </h4><br>
+                    <em> You can find it in <strong style="color: brown;">{{ section_names[ results.index(book) ]
+                            }}</strong> section </em>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=\, initial-scale=1.0" />
+  <title>PagePal - Books Owned</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css' )
+    }}" />
+  <link rel="icon" type="images/x-icon" href="{{ url_for( 'static' ,
+    filename='pictures/favicon.ico' ) }}" />
+
+  <script src="https://kit.fontawesome.com/62854c29f7.js" crossorigin="anonymous"></script>
+  <style>
+    .message {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 20px;
+    }
+
+    body {
+      background-image: url("../static/pictures/background-image.avif");
+      background-repeat: space;
+      background-size: 1%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="message">
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for cat,msg in messages %}
+    <div class="alert alert-{{ cat }}">{{msg}}</div>
+    {% endfor %} {% endif %} {% endwith %}
+  </div>
+
+  <section class="top-categories">
+    <div class="container">
+      <div class="category-heading">
+        <h1 style="color: black; font-size: 80px">Your Books</h1>
+        <p>Hope you will enjoy reading these books</p>
+      </div>
+      <hr />
+
+      <div class="available-categories flex">
+        {% if all_user_books|length > 0 %} {% for book in all_user_books %}
+        <div class="card flex">
+          <h2>
+            <a style="color: black"> {{ book.name }} </a>
+          </h2>
+          <p>{{ book.content }}</p>
+          <br />
+          <h4>
+            {% if book.name in books %}
+                {% set rd_book = book.name  %}
+            {% else %}
+                {% set rd_book = books|random %}
+            {% endif %}
+
+            <a style="color: brown" href="{{ url_for('static', filename='books/' + rd_book + '.pdf') }}"
+              download="{{rd_book}}.pdf">Get Ebook
+            </a>
+          </h4>
+        </div>
+        {% endfor %} {% else %}
+        <h3 style="margin: 220px; color: brown">
+          Shop for books and come back here !!
+        </h3>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <title>PagePal - Recommendations</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link
+      rel="icon"
+      type="images/x-icon"
+      href="{{ url_for( 'static' , filename='pictures/favicon.ico' ) }}"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/62854c29f7.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <section class="top-categories">
+      <div class="container">
+        <div class="category-heading">
+          <h1 style="color: black; font-size: 80px">
+            Our <strong style="color: brown">Recommendations</strong>
+          </h1>
+          <p>Hope this could help you</p>
+        </div>
+        <hr />
+
+
+        {% if recommendation %}
+            <div class="available-categories flex">
+            {% for book in recommendation %}
+            <div class="card flex">
+                <h2>
+                <a style="color: black"> {{ book.name }} </a>
+                </h2>
+                <p>{{ book.content }}</p>
+                <br />
+                <em>
+                You can find it in
+                <strong style="color: brown"
+                    >{{ sections[ recommendation.index(book) ] }}</strong
+                >
+                section
+                </em>
+            </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <h2 style="margin: 140px; margin-left: 450px; margin-bottom: 5px;"> <strong style="color:brown">  DROP</strong> BY LATER.   </h2>
+            <h4 style="margin-left: 480px;">We will try to <strong style="color:brown">add</strong> a few for you</h4>
+            {% endif %}
+      </div>
+    </section>
+  </body>
+</html>
