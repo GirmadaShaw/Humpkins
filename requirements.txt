@@ -21,6 +21,7 @@ confection==0.1.4
 contourpy==1.2.1
 cycler==0.12.1
 cymem==2.0.8
+DateTime==5.5
 debugpy==1.8.1
 decorator==5.1.1
 Django==5.0.4
@@ -161,3 +162,4 @@ Werkzeug==3.0.2
 wheel==0.43.0
 wrapt==1.16.0
 xgboost==2.0.3
+zope.interface==6.4.post2
